@@ -1,0 +1,113 @@
+<div class="container">
+  <div [hidden] = "productAdded">
+    <h3 style="margin-top: 30px;">New Book Information<span style="font-size:small">* is a required field</span></h3>
+
+    <form (ngSubmit)="onSubmit()">
+
+      <md-grid-list cols="4" rowHeight="60px">
+        <md-grid-tile [colspan] = "4" [rowspan] = "1">
+          <md-input-container>
+            <input mdInput id="id" type="number" required [(ngModel)] = "newProduct.id" name="id" placeholder="ID" >
+          </md-input-container>
+
+        </md-grid-tile>
+      </md-grid-list>
+
+      <md-grid-list cols="4" rowHeight="60px">
+        <md-grid-tile [colspan] = "4" [rowspan] = "1">
+          <md-input-container>
+            <input mdInput id="title" type="text" required [(ngModel)] = "newProduct.title" name="title" placeholder="Title" >
+          </md-input-container>
+        </md-grid-tile>
+
+        <md-grid-tile [colspan]="4" [rowspan]="1">
+          <md-input-container>
+            <input mdInput id="addDate" type="date" required [(ngModel)]="newProduct.addDate" name="addDate" placeholder="Add Date">
+          </md-input-container>
+        </md-grid-tile>
+      </md-grid-list>
+
+      <md-grid-list cols="4" rowHeight="60px">
+        <md-grid-tile [colspan]="2" [rowspan]="1">
+          <md-select placeholder="Category" id="category" name="category" [(ngModel)]="newProduct.category">
+            <md-option value="Health">Health</md-option>
+            <md-option value="Clothing">Clothing</md-option>
+            <md-option value="Shoes">Shoes</md-option>
+          </md-select>
+        </md-grid-tile>
+      </md-grid-list>
+
+      <md-grid-list cols="4" rowHeight="60px">
+        <md-grid-tile [colspan] = "2" [rowspan] = "1">
+          <md-input-container>
+            <input mdInput id="brand" type="text" required [(ngModel)] = "newProduct.brand" name="brand" placeholder="Brand" >
+          </md-input-container>
+        </md-grid-tile>
+      </md-grid-list>
+
+      <md-grid-list cols="4" rowHeight="60px">
+        <md-grid-tile [colspan] = "2" [rowspan] = "1">
+          <md-input-container>
+            <input mdInput id="listPrice" type="number" required [(ngModel)] = "newProduct.listPrice" name="listPrice" placeholder="List Price" >
+          </md-input-container>
+        </md-grid-tile>
+        <md-grid-tile [colspan] = "2" [rowspan] = "1">
+          <md-input-container>
+            <input mdInput id="ourPrice" type="number" required [(ngModel)] = "newProduct.ourPrice" name="ourPrice" placeholder="Our Price" >
+          </md-input-container>
+        </md-grid-tile>
+      </md-grid-list>
+
+      <md-grid-list cols="4" rowHeight="60px">
+      <md-grid-tile [colspan] = "2" [rowspan] = "1">
+        <md-input-container>
+          <input mdInput id="shippingWeight" type="number" step="0.01" required [(ngModel)] = "newProduct.shippingWeight" name="shippingWeight" placeholder="Shipping Weight" >
+        </md-input-container>
+      </md-grid-tile>
+        <md-grid-tile [colspan] = "2" [rowspan] = "1">
+          <md-input-container>
+            <input mdInput id="shippingFee" type="number" step="0.01" required [(ngModel)] = "newProduct.shippingFee" name="shippingFee" placeholder="Shipping Fee" >
+          </md-input-container>
+        </md-grid-tile>
+      </md-grid-list>
+
+      <md-grid-list cols="4" rowHeight="60px">
+        <md-grid-tile [colspan] = "2" [rowspan] = "1">
+          <md-input-container>
+            <input mdInput id="inStockNumber" type="number" step="0.01" required [(ngModel)] = "newProduct.inStockNumber" name="inStockNumber" placeholder="Numbers in stock" >
+          </md-input-container>
+        </md-grid-tile>
+
+        <md-grid-tile [colspan] = "2" [rowspan] = "1">
+          &nbsp;
+          <md-slide-toggle [color]="color" [checked]="checked" [disabled]="disabled" [(ngModel)]="newProduct.active" name="active">
+            Active
+          </md-slide-toggle>
+        </md-grid-tile>
+      </md-grid-list>
+
+      <md-input-container>
+        <textarea mdInput id="description" [(ngModel)] = "newProduct.description" name="description"></textarea>
+      </md-input-container>
+
+      Image &nbsp;
+      <input id="title" type="file" id="productImage" name="productImage" (change) = "uploadImageService.fileChangeEvent($event)">
+      <br><br>
+
+      <md-grid-list cols="20" rowHeight="60px">
+        <md-grid-tile [colspan] = "2" [rowspan] = "1">
+            <button class="mat-primary" md-raised-button type="submit" >Add Product</button>
+        </md-grid-tile>
+
+        <md-grid-tile [colspan] = "2" [rowspan] = "1">
+          <a class="mat-warn" md-raised-button routerLink="/">Cancel</a>
+        </md-grid-tile>
+      </md-grid-list>
+
+    </form>
+  </div>
+  <div class="row" [hidden] = "!productAdded">
+    <h3>Product Added Successfully!</h3>
+  </div>
+</div>
+

@@ -1,0 +1,54 @@
+<div class="container" >
+  <div class="table-responsive" style="margin-top: 30px;">
+    <table id ="productListTable" class="table bordered highlight" >
+      <thead>
+        <tr>
+          <th>
+            <input type="checkbox"
+                   (change)="updateSelected($event.target.checked)" />
+          </th>
+          <th>Title</th>
+          <th>Brand</th>
+          <th>listPrice</th>
+          <th>shippingWeight</th>
+          <th>shippingFee</th>
+          <th>inStockNumber</th>
+          <th>Description</th>
+          <th>Category</th>
+          <th>addDate</th>
+          <th>Active?</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor = "let product of productList">
+          <td>
+            <input hidden="hidden" name="id" />
+            <input type="checkbox" [checked] = "allChecked" (change)="updateRemoveProductList($event.target.checked, product)" />
+          </td>
+          <td>
+            <a (click)="onSelect(product)" style="cursor:pointer">
+              {{product.title}}
+            </a>
+          </td>
+          <td>{{product.brand}}</td>
+          <td>{{product.listPrice}}</td>
+          <td>{{product.shippingWeight}}</td>
+          <td>{{product.shippingFee}}</td>
+          <td>{{product.inStockNumber}}</td>
+          <td>{{product.description}}</td>
+          <td>{{product.category}}</td>
+          <td>{{product.addDate}}</td>
+          <td>{{product.active}}</td>
+          <td>
+            <input hidden="hidden" name="id" />
+            <button md-button (click)="openDialog(product)" value="delete"><span class="fa fa-time"></span>delete</button>
+          </td>
+
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+  <button md-raised-button class="mat-warn" id="deleteSelected" (click)="removeSelectedProducts()">Delete Button</button>
+</div>
+
